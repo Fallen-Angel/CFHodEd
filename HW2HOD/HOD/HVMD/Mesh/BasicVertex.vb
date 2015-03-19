@@ -41,6 +41,9 @@ Public Structure BasicVertex
     ''' <summary>W component of normal.</summary>
     Private NormalW As Single
 
+    Private Temp1 As UInt32
+    Private Temp2 As UInt32
+
     ' -----------------
     ' Class properties.
     ' -----------------
@@ -353,8 +356,8 @@ Public Structure BasicVertex
 
 
             If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
-            IFF.ReadUInt32() _
-            : IFF.ReadUInt32()
+            .Temp1 = IFF.ReadUInt32() _
+            : .Temp2 = IFF.ReadUInt32()
 
         End With
 
@@ -399,10 +402,14 @@ Public Structure BasicVertex
 
   If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
    IFF.Write(Binormal.X) _
- : IFF.Write(Binormal.Y) _
- : IFF.Write(Binormal.Z)
+        : IFF.Write(Binormal.Y) _
+        : IFF.Write(Binormal.Z)
 
- End Sub
+        If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
+        IFF.WriteUInt32(Temp1) _
+        : IFF.WriteUInt32(Temp2)
+
+    End Sub
 
  ''' <summary>
  ''' Colour converter (HW2 -> D3D)
