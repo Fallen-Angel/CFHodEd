@@ -1,0 +1,27 @@
+﻿ps_1_4
+
+; USAGE:
+; lighting must be enabled
+; $diffuse texture must be in stage 0
+
+; load the texture.
+texld r0, t0
+
+; store the alpha
+mov r1, r0.a
+
+; bias the alpha - black (0) becomes negative (-1)
+; and white (1) becomes positive (+1)
+mov r2, r0_bx2.a
+
+; this is needed to be able to use 'texkill'.
+phase
+
+; cancel render if original alpha was < 0.5
+texkill r2
+
+; retrieve old alpha
+mov r0.a, r1.r
+
+; do diffuse lighting, but not specular.
+mul r0, r0, v0

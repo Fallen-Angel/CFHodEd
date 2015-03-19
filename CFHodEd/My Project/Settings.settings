@@ -1,0 +1,93 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="D3D_DisplayFrameRate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HOD_Owner" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HOD_TeamColour" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-8421505</Value>
+    </Setting>
+    <Setting Name="HOD_StripeColour" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-8421505</Value>
+    </Setting>
+    <Setting Name="HOD_BadgeTexture" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HOD_MakeBackup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HOD_ProcessBGLighting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HOD_UseShaders" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Form_ExceptionDisplay_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">384, 284</Value>
+    </Setting>
+    <Setting Name="Form_ExceptionDisplay_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="Form_HODBGTexGen_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">384, 284</Value>
+    </Setting>
+    <Setting Name="Form_HODBGTexGen_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_HODEditorA_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_HODEditorA_Size" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">640, 480</Value>
+    </Setting>
+    <Setting Name="Form_HODEditorA_WindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
+      <Value Profile="(Default)">Normal</Value>
+    </Setting>
+    <Setting Name="Form_HODType_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_IOResult_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">496, 222</Value>
+    </Setting>
+    <Setting Name="Form_IOResult_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_LightEditor_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_MaterialSubstitute_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">384, 62</Value>
+    </Setting>
+    <Setting Name="Form_MaterialSubstitute_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_MeshTransformer_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">634, 452</Value>
+    </Setting>
+    <Setting Name="Form_MeshTransformer_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_Options_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_TexturePreview_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">506, 306</Value>
+    </Setting>
+    <Setting Name="Form_TexturePreview_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_JointSelector_ClientSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">290, 262</Value>
+    </Setting>
+    <Setting Name="Form_JointSelector_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+    <Setting Name="Form_JointTemplates_Location" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">40, 40</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

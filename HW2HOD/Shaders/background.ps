@@ -1,0 +1,17 @@
+﻿ps_1_4
+
+; this shader's main effects are nullifying the effect of 
+; half-toning on the background mesh and performing alpha transparency.
+
+; USAGE:
+; lighting must be disabled.
+
+def c7, 1, 1, 1, 1
+
+; double the alpha.
+mov_sat r1, v0_x2.a
+
+; multiply the diffuse colour by alhpa so as to give the effect of transparency.
+; then, double the RGB components to remove the effect of half-toning.
+mul_x2 r0.rgb, v0, r1 +
+ mov r0.a, c7.a

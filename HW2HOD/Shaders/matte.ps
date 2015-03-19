@@ -1,0 +1,11 @@
+﻿ps_1_4
+
+; USAGE:
+; lighting must be enabled
+; $diffuse texture must be in stage 0
+
+; load the texture.
+texld r0, t0
+
+; do diffuse lighting, but not specular.
+mul r0, r0, v0

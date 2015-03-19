@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <PlatformTarget>x86</PlatformTarget>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C0E1BEC-EE85-47CA-8C37-6958BAAD9232}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>CFHodEd.My.MyApplication</StartupObject>
+    <RootNamespace>CFHodEd</RootNamespace>
+    <AssemblyName>CFHodEd</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>Off</OptionInfer>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>CFHodEd.ico</ApplicationIcon>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>CFHodEd.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>CFHodEd.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.Direct3DX, Version=1.0.2911.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Forms\AboutBox.Designer.vb">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExceptionDisplay.Designer.vb">
+      <DependentUpon>ExceptionDisplay.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExceptionDisplay.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HODBGTexGen.Designer.vb">
+      <DependentUpon>HODBGTexGen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HODBGTexGen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JointSelector.Designer.vb">
+      <DependentUpon>JointSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JointSelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JointTemplates.Designer.vb">
+      <DependentUpon>JointTemplates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JointTemplates.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LightEditor.Designer.vb">
+      <DependentUpon>LightEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LightEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MeshTransformer.Designer.vb">
+      <DependentUpon>MeshTransformer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MeshTransformer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HODEditorA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HODEditorA.Designer.vb">
+      <DependentUpon>HODEditorA.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HODType.Designer.vb">
+      <DependentUpon>HODType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HODType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IOResult.Designer.vb">
+      <DependentUpon>IOResult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IOResult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialSubstitute.Designer.vb">
+      <DependentUpon>MaterialSubstitute.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialSubstitute.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Options.Designer.vb">
+      <DependentUpon>Options.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TexturePreview.Designer.vb">
+      <DependentUpon>TexturePreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TexturePreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\AboutBox.resx">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExceptionDisplay.resx">
+      <DependentUpon>ExceptionDisplay.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HODBGTexGen.resx">
+      <DependentUpon>HODBGTexGen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JointSelector.resx">
+      <DependentUpon>JointSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JointTemplates.resx">
+      <DependentUpon>JointTemplates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LightEditor.resx">
+      <DependentUpon>LightEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MeshTransformer.resx">
+      <DependentUpon>MeshTransformer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HODEditorA.resx">
+      <DependentUpon>HODEditorA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HODType.resx">
+      <DependentUpon>HODType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IOResult.resx">
+      <DependentUpon>IOResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialSubstitute.resx">
+      <DependentUpon>MaterialSubstitute.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options.resx">
+      <DependentUpon>Options.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TexturePreview.resx">
+      <DependentUpon>TexturePreview.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\D3DHelper\D3DHelper.vbproj">
+      <Project>{4D89504F-1873-4A41-9253-21E18BC34F2B}</Project>
+      <Name>D3DHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenericMath\GenericMath.vbproj">
+      <Project>{55A9D27C-6A26-4379-9612-E84E177D4708}</Project>
+      <Name>GenericMath</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenericMesh\GenericMesh.vbproj">
+      <Project>{4912FA22-64A4-495B-BBDC-9825E36C0D93}</Project>
+      <Name>GenericMesh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMWavObjT\GMWavObjT.vbproj">
+      <Project>{D930FE9E-0E6A-4421-BF1A-B63008E1AD1C}</Project>
+      <Name>GMWavObjT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HW2HOD\HW2HOD.vbproj">
+      <Project>{B0E1E706-297B-4F0F-ACCF-DE5A9CD37A2B}</Project>
+      <Name>HW2HOD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HW2MAD\HW2MAD.vbproj">
+      <Project>{CA7FC163-7169-46B0-840D-77667B74C2DA}</Project>
+      <Name>HW2MAD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CFHodEd.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

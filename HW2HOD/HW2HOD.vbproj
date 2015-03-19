@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <PlatformTarget>x86</PlatformTarget>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0E1E706-297B-4F0F-ACCF-DE5A9CD37A2B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Homeworld2.HOD</RootNamespace>
+    <AssemblyName>HW2HOD</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>Off</OptionInfer>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>HW2HOD.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>HW2HOD.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.Direct3DX, Version=1.0.2911.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.DirectX" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HOD\BGMS\BGMS.vb" />
+    <Compile Include="HOD\DTRM\Star.vb" />
+    <Compile Include="HOD\DTRM\BGSG.vb" />
+    <Compile Include="HOD\DTRM\STRF.vb" />
+    <Compile Include="HOD\DTRM\BSRM.vb" />
+    <Compile Include="HOD\DTRM\CollisionMesh.vb" />
+    <Compile Include="HOD\DTRM\Dockpath.vb" />
+    <Compile Include="HOD\DTRM\DTRM.vb" />
+    <Compile Include="HOD\DTRM\EngineBurn.vb" />
+    <Compile Include="HOD\DTRM\EngineGlow.vb" />
+    <Compile Include="HOD\DTRM\EngineShape.vb" />
+    <Compile Include="HOD\DTRM\Joint.vb" />
+    <Compile Include="HOD\DTRM\Marker.vb" />
+    <Compile Include="HOD\DTRM\NavLight.vb" />
+    <Compile Include="HOD\HOD.vb" />
+    <Compile Include="HOD\HODConstants.vb" />
+    <Compile Include="HOD\HODManipulator.vb" />
+    <Compile Include="HOD\HVMD\HVMD.vb" />
+    <Compile Include="HOD\HVMD\Light\Light.vb" />
+    <Compile Include="HOD\HVMD\Light\LightEnums.vb" />
+    <Compile Include="HOD\HVMD\Material\Default.vb" />
+    <Compile Include="HOD\HVMD\Material\Material.vb" />
+    <Compile Include="HOD\HVMD\Material\Parameter.vb" />
+    <Compile Include="HOD\HVMD\Material\Reference.vb" />
+    <Compile Include="HOD\HVMD\Mesh\BasicMesh.vb" />
+    <Compile Include="HOD\HVMD\Mesh\PNVertex.vb" />
+    <Compile Include="HOD\HVMD\Mesh\SimpleVertex.vb" />
+    <Compile Include="HOD\HVMD\Mesh\GoblinMesh.vb" />
+    <Compile Include="HOD\HVMD\Mesh\MultiMesh.vb" />
+    <Compile Include="HOD\HVMD\Mesh\SimpleMesh.vb" />
+    <Compile Include="HOD\HVMD\Mesh\VariableMesh.vb" />
+    <Compile Include="HOD\HVMD\Mesh\BasicVertex.vb" />
+    <Compile Include="HOD\HVMD\Mesh\VertexMasks.vb" />
+    <Compile Include="HOD\HVMD\Texture\Mip.vb" />
+    <Compile Include="HOD\HVMD\Texture\Texture.vb" />
+    <Compile Include="HOD\HODRender.vb" />
+    <Compile Include="HOD\INFO\INFO.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="EventList.vb" />
+    <Compile Include="ShaderLibrary.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shaders\background.ps" />
+    <EmbeddedResource Include="Shaders\badge.ps" />
+    <EmbeddedResource Include="Shaders\megalith.ps" />
+    <EmbeddedResource Include="Shaders\ship.ps" />
+    <EmbeddedResource Include="Shaders\thruster.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenericMath\GenericMath.vbproj">
+      <Project>{55A9D27C-6A26-4379-9612-E84E177D4708}</Project>
+      <Name>GenericMath</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenericMesh\GenericMesh.vbproj">
+      <Project>{4912FA22-64A4-495B-BBDC-9825E36C0D93}</Project>
+      <Name>GenericMesh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HW2IFF\HW2IFF.vbproj">
+      <Project>{770125AF-61DD-4D91-8B6D-428FEFF8BFE2}</Project>
+      <Name>HW2IFF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shaders\mattealpha.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shaders\matte.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shaders\badge.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
