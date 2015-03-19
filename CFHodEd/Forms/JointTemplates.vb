@@ -342,7 +342,7 @@ Friend NotInheritable Class JointTemplates
   End If
 
   ' Close form.
-  DialogResult = Windows.Forms.DialogResult.OK
+  DialogResult = DialogResult.OK
   Me.Close()
 
  End Sub

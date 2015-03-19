@@ -123,7 +123,7 @@ Friend NotInheritable Class Options
    ColorDialog.Color = Color.FromArgb(sldStripeRed.Value, sldStripeGreen.Value, sldStripeBlue.Value)
 
   ' See if user pressed cancel.
-  If ColorDialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then _
+  If ColorDialog.ShowDialog() = DialogResult.Cancel Then _
    Exit Sub
 
   ' Set new team colour if needed.
@@ -145,7 +145,7 @@ Friend NotInheritable Class Options
 
  Private Sub cmdBadgeTextureBrowse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdBadgeTextureBrowse.Click
   ' See if user pressed cancel.
-  If OpenBadgeFileDialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then _
+  If OpenBadgeFileDialog.ShowDialog() = DialogResult.Cancel Then _
    Exit Sub
 
   ' Set badge texture.

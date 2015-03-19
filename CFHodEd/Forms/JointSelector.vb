@@ -97,13 +97,13 @@ Friend NotInheritable Class JointSelector
   m_Animation.Joints.Add(New AnimatedJoint With {.Joint = j})
 
   ' Close.
-  Me.DialogResult = Windows.Forms.DialogResult.OK
+  Me.DialogResult = DialogResult.OK
   Me.Close()
 
  End Sub
 
  Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-  Me.DialogResult = Windows.Forms.DialogResult.Cancel
+  Me.DialogResult = DialogResult.Cancel
   Me.Close()
 
  End Sub

@@ -498,12 +498,12 @@ Friend NotInheritable Class HODBGTexGen
  Private Sub cmdSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSave.Click
   Dim ext As String = ""
 
-  ' See if user pressed cancel.
-  If SaveFileDialog.ShowDialog() = Windows.Forms.DialogResult.Cancel Then _
+        ' See if user pressed cancel.
+        If SaveFileDialog.ShowDialog() = DialogResult.Cancel Then _
    Exit Sub
 
-  ' Get extension.
-  ext = IO.Path.GetExtension(SaveFileDialog.FileName).ToLower()
+        ' Get extension.
+        ext = IO.Path.GetExtension(SaveFileDialog.FileName).ToLower()
 
   ' Decide output format.
   Dim f As Direct3D.ImageFileFormat = Direct3D.ImageFileFormat.Tga
