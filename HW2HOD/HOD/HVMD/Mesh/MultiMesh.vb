@@ -183,11 +183,12 @@ Public NotInheritable Class MultiMesh
   ' Read LOD count.
   Dim LODCount As Integer = IFF.ReadInt32()
 
-  ' Add handlers
-  IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1400)
+        ' Add handlers
+        IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1400)
+        IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1401)
 
-  ' Read all LODs.
-  IFF.Parse()
+        ' Read all LODs.
+        IFF.Parse()
 
   ' Make sure we read all the mentioned LODs.
   If LODCount <> m_LODs.Count Then _
