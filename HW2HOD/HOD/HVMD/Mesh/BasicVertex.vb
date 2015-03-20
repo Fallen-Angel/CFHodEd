@@ -78,7 +78,7 @@ Public Structure BasicVertex
     ''' </remarks>
     Public ReadOnly Property VertexSize() As Integer Implements GenericMesh.IVertex.VertexSize
         Get
-            Return 68
+            Return 76
 
         End Get
 
@@ -366,41 +366,41 @@ Public Structure BasicVertex
 
     End Function
 
- ''' <summary>
- ''' Writes the vertex to an IFF file.
- ''' </summary>
- ''' <param name="IFF">
- ''' The IFF writer to write to.
- ''' </param>
- ''' <param name="VertexMasks">
- ''' The vertex fields to write.
- ''' </param>
- Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter, ByVal VertexMasks As VertexMasks)
-  If (VertexMasks And VertexMasks.Position) <> 0 Then _
+    ''' <summary>
+    ''' Writes the vertex to an IFF file.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' The IFF writer to write to.
+    ''' </param>
+    ''' <param name="VertexMasks">
+    ''' The vertex fields to write.
+    ''' </param>
+    Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter, ByVal VertexMasks As VertexMasks)
+        If (VertexMasks And VertexMasks.Position) <> 0 Then _
    IFF.Write(Position.X) _
- : IFF.Write(Position.Y) _
- : IFF.Write(Position.Z) _
- : IFF.Write(PositionW)
+        : IFF.Write(Position.Y) _
+        : IFF.Write(Position.Z) _
+        : IFF.Write(PositionW)
 
-  If (VertexMasks And VertexMasks.Normal) <> 0 Then _
+        If (VertexMasks And VertexMasks.Normal) <> 0 Then _
    IFF.Write(Normal.X) _
- : IFF.Write(Normal.Y) _
- : IFF.Write(Normal.Z) _
- : IFF.Write(NormalW)
+        : IFF.Write(Normal.Y) _
+        : IFF.Write(Normal.Z) _
+        : IFF.Write(NormalW)
 
-  If (VertexMasks And VertexMasks.Colour) <> 0 Then _
+        If (VertexMasks And VertexMasks.Colour) <> 0 Then _
    IFF.WriteInt32(__swap2(Diffuse))
 
-  If (VertexMasks And VertexMasks.Texture0) <> 0 Then _
+        If (VertexMasks And VertexMasks.Texture0) <> 0 Then _
    IFF.Write(Tex.X) _
- : IFF.Write(Tex.Y)
+        : IFF.Write(Tex.Y)
 
-  If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
+        If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
    IFF.Write(Tangent.X) _
- : IFF.Write(Tangent.Y) _
- : IFF.Write(Tangent.Z)
+        : IFF.Write(Tangent.Y) _
+        : IFF.Write(Tangent.Z)
 
-  If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
+        If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
    IFF.Write(Binormal.X) _
         : IFF.Write(Binormal.Y) _
         : IFF.Write(Binormal.Z)
@@ -411,22 +411,22 @@ Public Structure BasicVertex
 
     End Sub
 
- ''' <summary>
- ''' Colour converter (HW2 -> D3D)
- ''' </summary>
- Private Shared Function __swap1(ByVal v As Int32) As Int32
-  Dim c As Direct3D.ColorValue = Direct3D.ColorValue.FromArgb(v)
-  Return New Direct3D.ColorValue(c.Alpha, c.Red, c.Green, c.Blue).ToArgb()
+    ''' <summary>
+    ''' Colour converter (HW2 -> D3D)
+    ''' </summary>
+    Private Shared Function __swap1(ByVal v As Int32) As Int32
+        Dim c As Direct3D.ColorValue = Direct3D.ColorValue.FromArgb(v)
+        Return New Direct3D.ColorValue(c.Alpha, c.Red, c.Green, c.Blue).ToArgb()
 
- End Function
+    End Function
 
- ''' <summary>
- ''' Colour converter (D3D -> HW2).
- ''' </summary>
- Private Shared Function __swap2(ByVal v As Int32) As Int32
-  Dim c As Direct3D.ColorValue = Direct3D.ColorValue.FromArgb(v)
-  Return New Direct3D.ColorValue(c.Green, c.Blue, c.Alpha, c.Red).ToArgb()
+    ''' <summary>
+    ''' Colour converter (D3D -> HW2).
+    ''' </summary>
+    Private Shared Function __swap2(ByVal v As Int32) As Int32
+        Dim c As Direct3D.ColorValue = Direct3D.ColorValue.FromArgb(v)
+        Return New Direct3D.ColorValue(c.Green, c.Blue, c.Alpha, c.Red).ToArgb()
 
- End Function
+    End Function
 
 End Structure
