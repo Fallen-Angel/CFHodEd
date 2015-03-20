@@ -30,16 +30,18 @@ Public NotInheritable Class BasicMesh
  ''' <summary>Level of Detail</summary>
  Private m_LOD As Integer
 
- ''' <summary>Whether the mesh is visible or not.</summary>
- Private m_Visible As Boolean = True
+    ''' <summary>Whether the mesh is visible or not.</summary>
+    Private m_Visible As Boolean = True
 
- ' ------------------------
- ' Constructors\Finalizers.
- ' ------------------------
- ''' <summary>
- ''' Class constructor.
- ''' </summary>
- Public Sub New()
+    Private m_Version As UInteger
+
+    ' ------------------------
+    ' Constructors\Finalizers.
+    ' ------------------------
+    ''' <summary>
+    ''' Class constructor.
+    ''' </summary>
+    Public Sub New()
   Initialize()
 
  End Sub
@@ -129,11 +131,13 @@ Public NotInheritable Class BasicMesh
   ' Read LoD.
   m_LOD = IFF.ReadInt32()
 
-  ' Read number of parts and initialize.
-  Me.PartCount = IFF.ReadInt32()
+        ' Read number of parts and initialize.
+        Me.PartCount = IFF.ReadInt32()
 
-  ' Read all parts.
-  For I As Integer = 0 To Me.PartCount - 1
+        m_Version = ChunkAttributes.Version
+
+        ' Read all parts.
+        For I As Integer = 0 To Me.PartCount - 1
    With Me.Part(I)
     ' Read material index.
     .Material.Index = IFF.ReadInt32()
@@ -195,9 +199,9 @@ Public NotInheritable Class BasicMesh
  ''' IFF writer to write to.
  ''' </param>
  Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter)
-  IFF.Push("BMSH", Homeworld2.IFF.ChunkType.Normal, 1400)
+        IFF.Push("BMSH", Homeworld2.IFF.ChunkType.Normal, m_Version)
 
-  IFF.WriteInt32(m_LOD)
+        IFF.WriteInt32(m_LOD)
   IFF.WriteInt32(Me.PartCount)
 
   For I As Integer = 0 To Me.PartCount - 1

@@ -64,16 +64,18 @@ Partial Class HOD
  ''' <summary>Star fields.</summary>
  Private m_StarFields As New EventList(Of StarField)
 
- ''' <summary>Textured star fields.</summary>
- Private m_StarFieldsT As New EventList(Of StarFieldT)
+    ''' <summary>Textured star fields.</summary>
+    Private m_StarFieldsT As New EventList(Of StarFieldT)
 
- ' -----------------
- ' Class properties.
- ' -----------------
- ''' <summary>
- ''' Returns the root joint of this HOD, if applicable.
- ''' </summary>
- Public ReadOnly Property Root() As Joint
+    Private m_Scar As List(Of Byte())
+
+    ' -----------------
+    ' Class properties.
+    ' -----------------
+    ''' <summary>
+    ''' Returns the root joint of this HOD, if applicable.
+    ''' </summary>
+    Public ReadOnly Property Root() As Joint
   Get
    Return m_RootJoint
 
@@ -332,45 +334,53 @@ Partial Class HOD
 
  End Property
 
- ' -----------------
- ' Member Functions.
- ' -----------------
- ''' <summary>
- ''' Reads the DTRM chunk from an IFF reader.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF reader to read from.
- ''' </param>
- ''' <param name="ChunkAttributes">
- ''' Attributes of the chunk.
- ''' </param>
- Private Sub ReadDTRMChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
-  ' Add handlers.
-  IFF.AddHandler("HIER", Homeworld2.IFF.ChunkType.Default, AddressOf ReadHIERChunk)
-  IFF.AddHandler("ETSH", Homeworld2.IFF.ChunkType.Default, AddressOf ReadETSHChunk)
-  IFF.AddHandler("GLOW", Homeworld2.IFF.ChunkType.Form, AddressOf ReadGLOWChunk)
-  IFF.AddHandler("BURN", Homeworld2.IFF.ChunkType.Default, AddressOf ReadBURNChunk)
-  IFF.AddHandler("NAVL", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadNAVLChunk, 3)
-  IFF.AddHandler("DOCK", Homeworld2.IFF.ChunkType.Default, AddressOf ReadDOCKChunk)
-  IFF.AddHandler("MRKR", Homeworld2.IFF.ChunkType.Form, AddressOf ReadMRKRChunk)
-  IFF.AddHandler("BGSG", Homeworld2.IFF.ChunkType.Form, AddressOf ReadBGSGChunk)
-  IFF.AddHandler("STRF", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadSTRFChunk, 1000)
-  IFF.AddHandler("BNDV", Homeworld2.IFF.ChunkType.Default, AddressOf ReadBNDVChunk)
-  IFF.AddHandler("COLD", Homeworld2.IFF.ChunkType.Form, AddressOf ReadCOLDChunk)
-  IFF.AddHandler("BSRM", Homeworld2.IFF.ChunkType.Form, AddressOf ReadBSRMChunk)
+    ' -----------------
+    ' Member Functions.
+    ' -----------------
+    ''' <summary>
+    ''' Reads the DTRM chunk from an IFF reader.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF reader to read from.
+    ''' </param>
+    ''' <param name="ChunkAttributes">
+    ''' Attributes of the chunk.
+    ''' </param>
+    Private Sub ReadDTRMChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+        ' Add handlers.
+        IFF.AddHandler("HIER", Homeworld2.IFF.ChunkType.Default, AddressOf ReadHIERChunk)
+        IFF.AddHandler("ETSH", Homeworld2.IFF.ChunkType.Default, AddressOf ReadETSHChunk)
+        IFF.AddHandler("GLOW", Homeworld2.IFF.ChunkType.Form, AddressOf ReadGLOWChunk)
+        IFF.AddHandler("BURN", Homeworld2.IFF.ChunkType.Default, AddressOf ReadBURNChunk)
+        IFF.AddHandler("NAVL", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadNAVLChunk, 3)
+        IFF.AddHandler("DOCK", Homeworld2.IFF.ChunkType.Default, AddressOf ReadDOCKChunk)
+        IFF.AddHandler("MRKR", Homeworld2.IFF.ChunkType.Form, AddressOf ReadMRKRChunk)
+        IFF.AddHandler("BGSG", Homeworld2.IFF.ChunkType.Form, AddressOf ReadBGSGChunk)
+        IFF.AddHandler("STRF", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadSTRFChunk, 1000)
+        IFF.AddHandler("BNDV", Homeworld2.IFF.ChunkType.Default, AddressOf ReadBNDVChunk)
+        IFF.AddHandler("COLD", Homeworld2.IFF.ChunkType.Form, AddressOf ReadCOLDChunk)
+        IFF.AddHandler("BSRM", Homeworld2.IFF.ChunkType.Form, AddressOf ReadBSRMChunk)
 
-  ' Read the file.
-  IFF.Parse()
+        m_Scar = New List(Of Byte())()
+        IFF.AddHandler("SCAR", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadSCARChunk, 2015)
 
- End Sub
+        ' Read the file.
+        IFF.Parse()
 
- ''' <summary>
- ''' Writes the DTRM chunk to an IFF writer.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF writer to write to.
- ''' </param>
- Private Sub WriteDTRMChunk(ByVal IFF As IFF.IFFWriter)
+    End Sub
+
+    Private Sub ReadSCARChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+        m_Scar.Add(IFF.ReadBytes(ChunkAttributes.Size))
+
+    End Sub
+
+    ''' <summary>
+    ''' Writes the DTRM chunk to an IFF writer.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF writer to write to.
+    ''' </param>
+    Private Sub WriteDTRMChunk(ByVal IFF As IFF.IFFWriter)
   IFF.Push("DTRM", Homeworld2.IFF.ChunkType.Form)
 
   WriteHIERChunk(IFF)
@@ -383,8 +393,15 @@ Partial Class HOD
   WriteBGSGChunk(IFF)
   WriteSTRFChunk(IFF)
   WriteBNDVChunk(IFF)
-  WriteCOLDChunk(IFF)
-  WriteBSRMChunk(IFF)
+        WriteCOLDChunk(IFF)
+
+        For Each scar As Byte() In m_Scar
+            IFF.Push("SCAR", Homeworld2.IFF.ChunkType.Normal, 2015)
+            IFF.Write(scar)
+            IFF.Pop()
+        Next
+
+        WriteBSRMChunk(IFF)
 
   IFF.Pop()
 
@@ -760,16 +777,16 @@ Partial Class HOD
 
  End Sub
 
- ''' <summary>
- ''' Reads the COLD chunk from an IFF reader.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF reader to read from.
- ''' </param>
- ''' <param name="ChunkAttributes">
- ''' Attributes of the chunk.
- ''' </param>
- Private Sub ReadCOLDChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+    ''' <summary>
+    ''' Reads the COLD chunk from an IFF reader.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF reader to read from.
+    ''' </param>
+    ''' <param name="ChunkAttributes">
+    ''' Attributes of the chunk.
+    ''' </param>
+    Private Sub ReadCOLDChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
   Dim cm As New CollisionMesh
   cm.ReadIFF(IFF)
   m_CollisionMeshes.Add(cm)

@@ -15,13 +15,15 @@ Public NotInheritable Class GoblinMesh
  ''' <summary>The basic mesh.</summary>
  Private m_Mesh As New BasicMesh
 
- ' ------------------------
- ' Constructors\Finalizers.
- ' ------------------------
- ''' <summary>
- ''' Class constructor.
- ''' </summary>
- Public Sub New()
+    Private m_Tags As String
+
+    ' ------------------------
+    ' Constructors\Finalizers.
+    ' ------------------------
+    ''' <summary>
+    ''' Class constructor.
+    ''' </summary>
+    Public Sub New()
   Initialize()
 
  End Sub
@@ -130,50 +132,65 @@ Public NotInheritable Class GoblinMesh
 
  End Function
 
- ''' <summary>
- ''' Reads a goblin mesh from an IFF reader.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF reader to read from.
- ''' </param>
- ''' <param name="ChunkAttributes">
- ''' Chunk attributes.
- ''' </param>
- Friend Sub ReadIFF(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
-  ' Initialize mesh first.
-  Initialize()
+    ''' <summary>
+    ''' Reads a goblin mesh from an IFF reader.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF reader to read from.
+    ''' </param>
+    ''' <param name="ChunkAttributes">
+    ''' Chunk attributes.
+    ''' </param>
+    Friend Sub ReadIFF(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+        ' Initialize mesh first.
+        Initialize()
 
-  ' Read name.
-  m_Name = IFF.ReadString()
+        ' Read name.
+        m_Name = IFF.ReadString()
 
-  ' Read parent name.
-  m_ParentName = IFF.ReadString()
+        ' Read parent name.
+        m_ParentName = IFF.ReadString()
 
-  ' Add handlers.
-  IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1400)
+        ' Add handlers.
+        IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1400)
+        IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1401)
 
-  ' Read mesh.
-  IFF.Parse()
+        IFF.AddHandler("TAGS", Homeworld2.IFF.ChunkType.Form, AddressOf ReadTAGSChunk)
 
- End Sub
+        ' Read mesh.
+        IFF.Parse()
 
- ''' <summary>
- ''' Writes the multi mesh to an IFF writer.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF writer to write to.
- ''' </param>
- Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter)
+    End Sub
+
+    Private Sub ReadTAGSChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+        ' Add handlers.
+        m_Tags = IFF.ReadString()
+
+    End Sub
+
+    ''' <summary>
+    ''' Writes the multi mesh to an IFF writer.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF writer to write to.
+    ''' </param>
+    Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter)
   IFF.Push("GOBG", Homeworld2.IFF.ChunkType.Normal, 1000)
 
   ' Write name
   IFF.Write(m_Name)
 
-  ' Write parent name
-  IFF.Write(m_ParentName)
+        ' Write parent name
+        IFF.Write(m_ParentName)
 
-  ' Write mesh.
-  m_Mesh.WriteIFF(IFF)
+        If (m_Tags <> Nothing) Then
+            IFF.Push("TAGS", Homeworld2.IFF.ChunkType.Form)
+            IFF.Write(m_Tags)
+            IFF.Pop()
+        End If
+
+        ' Write mesh.
+        m_Mesh.WriteIFF(IFF)
 
   For I As Integer = 0 To m_Mesh.PartCount - 1
    If m_Mesh.Part(I).Material.Index < 0 Then _

@@ -9,11 +9,13 @@ Public NotInheritable Class MultiMesh
  ''' <summary>Name of mesh (usually name of parent postfixed with "_mesh").</summary>
  Private m_Name As String
 
- ''' <summary>Name of mesh parent (joint).</summary>
- Private m_ParentName As String
+    ''' <summary>Name of mesh parent (joint).</summary>
+    Private m_ParentName As String
 
- ''' <summary>List of LODs (level of detail).</summary>
- Private WithEvents m_LODs As New EventList(Of BasicMesh)
+    Private m_Tags As String
+
+    ''' <summary>List of LODs (level of detail).</summary>
+    Private WithEvents m_LODs As New EventList(Of BasicMesh)
 
  ' -----------------
  ' Class properties.
@@ -161,48 +163,59 @@ Public NotInheritable Class MultiMesh
 
  End Sub
 
- ''' <summary>
- ''' Reads a multi mesh from an IFF reader.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF reader to read from.
- ''' </param>
- ''' <param name="ChunkAttributes">
- ''' Chunk attributes.
- ''' </param>
- Friend Sub ReadIFF(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
-  ' Initialize mesh first.
-  Initialize()
+    ''' <summary>
+    ''' Reads a multi mesh from an IFF reader.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF reader to read from.
+    ''' </param>
+    ''' <param name="ChunkAttributes">
+    ''' Chunk attributes.
+    ''' </param>
+    Friend Sub ReadIFF(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+        ' Initialize mesh first.
+        Initialize()
 
-  ' Read name.
-  m_Name = IFF.ReadString()
+        ' Read name.
+        m_Name = IFF.ReadString()
 
-  ' Read parent name.
-  m_ParentName = IFF.ReadString()
+        ' Read parent name.
+        m_ParentName = IFF.ReadString()
 
-  ' Read LOD count.
-  Dim LODCount As Integer = IFF.ReadInt32()
+        ' Read LOD count.
+        Dim LODCount As Integer = IFF.ReadInt32()
 
         ' Add handlers
         IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1400)
         IFF.AddHandler("BMSH", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadBMSHChunk, 1401)
 
+
+        IFF.AddHandler("TAGS", Homeworld2.IFF.ChunkType.Form, AddressOf ReadTAGSChunk)
+
         ' Read all LODs.
         IFF.Parse()
 
-  ' Make sure we read all the mentioned LODs.
-  If LODCount <> m_LODs.Count Then _
+        ' Make sure we read all the mentioned LODs.
+        If LODCount <> m_LODs.Count Then _
    Trace.TraceError("Multi mesh has an invalid LOD count!")
 
- End Sub
+    End Sub
 
- ''' <summary>
- ''' Writes the multi mesh to an IFF writer.
- ''' </summary>
- ''' <param name="IFF">
- ''' IFF writer to write to.
- ''' </param>
- Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter)
+
+
+    Private Sub ReadTAGSChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
+        ' Add handlers.
+        m_Tags = IFF.ReadString()
+
+    End Sub
+
+    ''' <summary>
+    ''' Writes the multi mesh to an IFF writer.
+    ''' </summary>
+    ''' <param name="IFF">
+    ''' IFF writer to write to.
+    ''' </param>
+    Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter)
   If m_LODs.Count = 0 Then _
    Exit Sub
 
@@ -214,11 +227,17 @@ Public NotInheritable Class MultiMesh
   ' Write parent name
   IFF.Write(m_ParentName)
 
-  ' Write LOD count.
-  IFF.WriteInt32(m_LODs.Count)
+        ' Write LOD count.
+        IFF.WriteInt32(m_LODs.Count)
 
-  ' Write all LODs.
-  For I As Integer = 0 To m_LODs.Count - 1
+        If (m_Tags <> Nothing) Then
+            IFF.Push("TAGS", Homeworld2.IFF.ChunkType.Form)
+            IFF.Write(m_Tags)
+            IFF.Pop()
+        End If
+
+        ' Write all LODs.
+        For I As Integer = 0 To m_LODs.Count - 1
    m_LODs(I).WriteIFF(IFF)
 
    For J As Integer = 0 To m_LODs(I).PartCount - 1

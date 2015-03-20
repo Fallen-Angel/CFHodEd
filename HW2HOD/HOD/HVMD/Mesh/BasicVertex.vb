@@ -28,6 +28,8 @@ Public Structure BasicVertex
 
     ''' <summary>Texture co-ordinates.</summary>
     Public Tex As Vector2
+    Public Tex1 As Vector2
+    Public Tex2 As Vector2
 
     ''' <summary>Tangent.</summary>
     Public Tangent As Vector3
@@ -40,9 +42,6 @@ Public Structure BasicVertex
 
     ''' <summary>W component of normal.</summary>
     Private NormalW As Single
-
-    Private Temp1 As UInt32
-    Private Temp2 As UInt32
 
     ' -----------------
     ' Class properties.
@@ -78,7 +77,7 @@ Public Structure BasicVertex
     ''' </remarks>
     Public ReadOnly Property VertexSize() As Integer Implements GenericMesh.IVertex.VertexSize
         Get
-            Return 76
+            Return 84
 
         End Get
 
@@ -344,6 +343,14 @@ Public Structure BasicVertex
     .Tex.X = IFF.ReadSingle() _
             : .Tex.Y = IFF.ReadSingle()
 
+            If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
+            .Tex1.X = IFF.ReadSingle() _
+            : .Tex1.Y = IFF.ReadSingle()
+
+            If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
+            .Tex2.X = IFF.ReadSingle() _
+            : .Tex2.Y = IFF.ReadSingle()
+
             If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
     .Tangent.X = IFF.ReadSingle() _
             : .Tangent.Y = IFF.ReadSingle() _
@@ -355,9 +362,6 @@ Public Structure BasicVertex
             : .Binormal.Z = IFF.ReadSingle()
 
 
-            If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
-            .Temp1 = IFF.ReadUInt32() _
-            : .Temp2 = IFF.ReadUInt32()
 
         End With
 
@@ -395,6 +399,14 @@ Public Structure BasicVertex
    IFF.Write(Tex.X) _
         : IFF.Write(Tex.Y)
 
+        If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
+   IFF.Write(Tex1.X) _
+        : IFF.Write(Tex1.Y)
+
+        If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
+   IFF.Write(Tex2.X) _
+        : IFF.Write(Tex2.Y)
+
         If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
    IFF.Write(Tangent.X) _
         : IFF.Write(Tangent.Y) _
@@ -404,10 +416,6 @@ Public Structure BasicVertex
    IFF.Write(Binormal.X) _
         : IFF.Write(Binormal.Y) _
         : IFF.Write(Binormal.Z)
-
-        If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
-        IFF.WriteUInt32(Temp1) _
-        : IFF.WriteUInt32(Temp2)
 
     End Sub
 

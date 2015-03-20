@@ -116,8 +116,8 @@ Partial Class Material
 
    Set(ByVal value As VertexMasks)
     ' Check for forbidden bits.
-    If ((value And VertexMasks.Texture2) <> 0) OrElse _
-       ((value And VertexMasks.Texture3) <> 0) OrElse _
+    'If ((value And VertexMasks.Texture2) <> 0) OrElse _
+    If ((value And VertexMasks.Texture3) <> 0) OrElse _
        ((value And VertexMasks.Texture4) <> 0) OrElse _
        ((value And VertexMasks.Texture5) <> 0) OrElse _
        ((value And VertexMasks.Texture6) <> 0) OrElse _
