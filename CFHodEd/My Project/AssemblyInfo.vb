@@ -10,17 +10,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("CFHodEd")> 
-<Assembly: AssemblyDescription("Cold Fusion HOD Editor")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("CFHodEd")> 
+<Assembly: AssemblyTitle("CFHodRMEd")>
+<Assembly: AssemblyDescription("Cold Fusion HOD Remastered Editor")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("CFHodRMEd")>
 <Assembly: AssemblyCopyright("-")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("b9f53f2c-22b8-4c6a-8f8a-6bcb6935fb50")> 
+<Assembly: Guid("b9f53f2c-22b8-4c6a-8f8a-6bcb6935fb50")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -33,7 +33,7 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.0.2.4")> 
-<Assembly: AssemblyFileVersion("4.0.2.4")> 
+<Assembly: AssemblyVersion("4.1.0.0")>
+<Assembly: AssemblyFileVersion("4.1.0.0")>
 
-<Assembly: NeutralResourcesLanguageAttribute("")> 
+<Assembly: NeutralResourcesLanguage("en")>
