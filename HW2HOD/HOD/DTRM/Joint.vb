@@ -1,4 +1,5 @@
-﻿Imports GenericMesh
+﻿Imports System.Linq
+Imports GenericMesh
 
 ''' <summary>
 ''' Class representing a Homeworld2 joint
@@ -428,7 +429,7 @@ Public NotInheritable Class Joint
  ''' Thrown when 'IFF' is nothing.
  ''' </exception>
  Friend Shared Sub WriteHIERChunk(ByVal IFF As IFF.IFFWriter, ByVal jRoot As Joint)
-  Dim Q As New Queue(Of Joint)
+  Dim Q As New Stack(Of Joint)
 
   ' Get joint count.
   Dim jcount As Integer = jRoot.Count()
@@ -445,18 +446,18 @@ Public NotInheritable Class Joint
  : jRoot.m_Name = "Root"
 
   ' Enqueue self.
-  Q.Enqueue(jRoot)
+  Q.Push(jRoot)
 
   ' Process each joint.
   Do Until Q.Count = 0
    ' Dequeue joint.
-   Dim j As Joint = Q.Dequeue()
+   Dim j As Joint = Q.Pop()
 
-   ' Enqueue children of this joint.
-   For I As Integer = 0 To j.m_Children.Count - 1
-    Q.Enqueue(j.m_Children(I))
+            ' Enqueue children of this joint.
+   For Each Child As Joint In j.m_Children.Reverse()
+    Q.Push(Child)
 
-   Next I ' For I As Integer = 0 To j.m_Children.Count - 1
+   Next ' For I As Integer = 0 To j.m_Children.Count - 1
 
    ' Get parent name
    Dim parentName As String = ""
