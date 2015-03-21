@@ -43,6 +43,8 @@ Public Structure BasicVertex
     ''' <summary>W component of normal.</summary>
     Private NormalW As Single
 
+    Private Version As UInteger
+
     ' -----------------
     ' Class properties.
     ' -----------------
@@ -77,7 +79,7 @@ Public Structure BasicVertex
     ''' </remarks>
     Public ReadOnly Property VertexSize() As Integer Implements GenericMesh.IVertex.VertexSize
         Get
-            Return 84
+            Return 88
 
         End Get
 
@@ -317,12 +319,14 @@ Public Structure BasicVertex
     ''' <param name="VertexMasks">
     ''' The vertex fields to read.
     ''' </param>
-    Friend Shared Function ReadIFF(ByVal IFF As IFF.IFFReader, ByVal VertexMasks As VertexMasks) As BasicVertex
+    Friend Shared Function ReadIFF(ByVal IFF As IFF.IFFReader, ByVal VertexMasks As VertexMasks, ByVal Version As UInteger) As BasicVertex
         Dim V As BasicVertex
 
         With V
             ' Initialize the vertex to account for missing fields.
             .Initialize()
+
+            .Version = Version
 
             If (VertexMasks And VertexMasks.Position) <> 0 Then _
     .Position.X = IFF.ReadSingle() _
@@ -343,13 +347,15 @@ Public Structure BasicVertex
     .Tex.X = IFF.ReadSingle() _
             : .Tex.Y = IFF.ReadSingle()
 
-            If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
-            .Tex1.X = IFF.ReadSingle() _
-            : .Tex1.Y = IFF.ReadSingle()
+            If (.Version = 1401) Then
+                If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
+                    .Tex1.X = IFF.ReadSingle() _
+                : .Tex1.Y = IFF.ReadSingle()
 
-            If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
-            .Tex2.X = IFF.ReadSingle() _
-            : .Tex2.Y = IFF.ReadSingle()
+                If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
+                    .Tex2.X = IFF.ReadSingle() _
+                : .Tex2.Y = IFF.ReadSingle()
+            End If
 
             If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
     .Tangent.X = IFF.ReadSingle() _
@@ -399,13 +405,15 @@ Public Structure BasicVertex
    IFF.Write(Tex.X) _
         : IFF.Write(Tex.Y)
 
-        If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
-   IFF.Write(Tex1.X) _
-        : IFF.Write(Tex1.Y)
+        If (Version = 1401) Then
+            If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
+            IFF.Write(Tex1.X) _
+            : IFF.Write(Tex1.Y)
 
-        If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
-   IFF.Write(Tex2.X) _
-        : IFF.Write(Tex2.Y)
+            If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
+            IFF.Write(Tex2.X) _
+            : IFF.Write(Tex2.Y)
+        End If
 
         If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
    IFF.Write(Tangent.X) _

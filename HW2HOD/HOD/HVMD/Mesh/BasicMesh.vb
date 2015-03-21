@@ -150,9 +150,9 @@ Public NotInheritable Class BasicMesh
 
     ' Read all vertices, and only the specified fields.
     For J As Integer = 0 To .Vertices.Count - 1
-     .Vertices(J) = BasicVertex.ReadIFF(IFF, .Material.VertexMask)
+                    .Vertices(J) = BasicVertex.ReadIFF(IFF, .Material.VertexMask, m_Version)
 
-    Next J ' For I As Integer = 0 To .Vertices.Count - 1
+                Next J ' For I As Integer = 0 To .Vertices.Count - 1
 
     ' Read the number of primitive groups.
     .PrimitiveGroupCount = IFF.ReadInt16()
