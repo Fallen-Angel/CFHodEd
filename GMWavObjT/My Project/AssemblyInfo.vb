@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("GMWavObjT")> 
-<Assembly: AssemblyDescription("Generic Mesh Wavefront Object Translator")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("GMWavObjT")> 
-<Assembly: AssemblyCopyright("")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("GMWavObjT")>
+<Assembly: AssemblyDescription("Generic Mesh Wavefront Object Translator")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("GMWavObjT")>
+<Assembly: AssemblyCopyright("")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("961036a4-584e-4c5e-9239-e731e1f899ed")> 
+<Assembly: Guid("961036a4-584e-4c5e-9239-e731e1f899ed")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

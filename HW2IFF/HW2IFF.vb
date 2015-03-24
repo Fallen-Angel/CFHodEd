@@ -2,15 +2,14 @@
 ''' Type of IFF chunk.
 ''' </summary>
 Public Enum ChunkType
- ''' <summary>No special header.</summary>
- [Default]
+    ''' <summary>No special header.</summary>
+    [Default]
 
- ''' <summary>Chunk in a 'NRML' header.</summary>
- Normal
+    ''' <summary>Chunk in a 'NRML' header.</summary>
+    Normal
 
- ''' <summary>Chunk in a 'FORM' header.</summary>
- Form
-
+    ''' <summary>Chunk in a 'FORM' header.</summary>
+    Form
 End Enum
 
 ''' <summary>
@@ -22,5 +21,5 @@ End Enum
 ''' <param name="ChunkAttributes">
 ''' Attributes of the chunk.
 ''' </param>
-Public Delegate Sub ChunkHandler(ByVal Reader As IFFReader, _
+Public Delegate Sub ChunkHandler(ByVal Reader As IFFReader,
                                  ByVal ChunkAttributes As ChunkAttributes)

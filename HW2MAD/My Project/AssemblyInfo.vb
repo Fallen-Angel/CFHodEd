@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("HW2MAD")> 
-<Assembly: AssemblyDescription("Homeworld2 MAD Manipulator Module")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("HW2MAD")> 
-<Assembly: AssemblyCopyright("-")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("HW2MAD")>
+<Assembly: AssemblyDescription("Homeworld2 MAD Manipulator Module")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("HW2MAD")>
+<Assembly: AssemblyCopyright("-")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("178a6098-10bc-411e-9868-14ddca52a1a9")> 
+<Assembly: Guid("178a6098-10bc-411e-9868-14ddca52a1a9")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

@@ -3,10 +3,9 @@
 ''' (first keyframe -> pre infinity, last keyframe -> post infinity.
 ''' </summary>
 Friend Enum InfinityType
- Constant
- Linear
- Cycle
- CycleWithOffset
- Oscillate
-
+    Constant
+    Linear
+    Cycle
+    CycleWithOffset
+    Oscillate
 End Enum

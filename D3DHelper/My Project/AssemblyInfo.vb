@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("D3DHelper")> 
-<Assembly: AssemblyDescription("Direct3D Helper Module")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("D3DHelper")> 
-<Assembly: AssemblyCopyright("")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("D3DHelper")>
+<Assembly: AssemblyDescription("Direct3D Helper Module")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("D3DHelper")>
+<Assembly: AssemblyCopyright("")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("0f0d5fae-4781-4071-9d5e-6966c469ee07")> 
+<Assembly: Guid("0f0d5fae-4781-4071-9d5e-6966c469ee07")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

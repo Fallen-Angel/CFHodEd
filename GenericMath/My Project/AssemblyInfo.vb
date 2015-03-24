@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("GenericMath")> 
-<Assembly: AssemblyDescription("Generic Math Module")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("GenericMath")> 
-<Assembly: AssemblyCopyright("")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("GenericMath")>
+<Assembly: AssemblyDescription("Generic Math Module")>
+<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyProduct("GenericMath")>
+<Assembly: AssemblyCopyright("")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("ef62edd2-f699-4ae3-af4a-4f691cc0b644")> 
+<Assembly: Guid("ef62edd2-f699-4ae3-af4a-4f691cc0b644")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>

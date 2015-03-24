@@ -28,6 +28,7 @@ Public Structure BasicVertex
 
     ''' <summary>Texture co-ordinates.</summary>
     Public Tex As Vector2
+
     Public Tex1 As Vector2
     Public Tex2 As Vector2
 
@@ -60,12 +61,10 @@ Public Structure BasicVertex
     Public ReadOnly Property Format() As Direct3D.VertexFormats Implements IVertex.Format
         Get
             Return Direct3D.VertexFormats.Position Or
-          Direct3D.VertexFormats.Normal Or
-          Direct3D.VertexFormats.Diffuse Or
-          Direct3D.VertexFormats.Texture3
-
+                   Direct3D.VertexFormats.Normal Or
+                   Direct3D.VertexFormats.Diffuse Or
+                   Direct3D.VertexFormats.Texture3
         End Get
-
     End Property
 
     ''' <summary>
@@ -80,9 +79,7 @@ Public Structure BasicVertex
     Public ReadOnly Property VertexSize() As Integer Implements GenericMesh.IVertex.VertexSize
         Get
             Return 88
-
         End Get
-
     End Property
 
     ' -----------------
@@ -94,13 +91,12 @@ Public Structure BasicVertex
     Friend Sub Initialize() Implements IVertex.Initialize
         Position = New Vector3(0, 0, 0)
         Normal = New Vector3(0, 0, 1)
-        Diffuse = -1
+        Diffuse = - 1
         Tex = New Vector2(0, 0)
         Tangent = New Vector3(0, 0, 0)
         Binormal = New Vector3(0, 0, 0)
         PositionW = 1
         NormalW = 1
-
     End Sub
 
     ''' <summary>
@@ -120,25 +116,24 @@ Public Structure BasicVertex
     Private Function Equal(ByVal other As IVertex) As Boolean Implements System.IEquatable(Of IVertex).Equals
         ' Check if 'other' is of same type.
         If Not TypeOf other Is BasicVertex Then _
-   Throw New ArgumentException("Object must be of type " & TypeName(Me).ToString & ".") _
-        : Exit Function
+            Throw New ArgumentException("Object must be of type " & TypeName(Me).ToString & ".") _
+                : Exit Function
 
         ' Get the vertex.
         Dim V As BasicVertex = CType(other, BasicVertex)
 
         ' Compare.
         If (V.Position <> Position) OrElse
-     (V.Normal <> Normal) OrElse
-     (V.Diffuse <> Diffuse) OrElse
-     (V.Tex <> Tex) OrElse
-     (V.Tangent <> Tangent) OrElse
-     (V.Binormal <> Binormal) OrElse
-     (V.PositionW <> PositionW) OrElse
-     (V.NormalW <> NormalW) Then _
-   Return False _
-  Else _
-   Return True
-
+           (V.Normal <> Normal) OrElse
+           (V.Diffuse <> Diffuse) OrElse
+           (V.Tex <> Tex) OrElse
+           (V.Tangent <> Tangent) OrElse
+           (V.Binormal <> Binormal) OrElse
+           (V.PositionW <> PositionW) OrElse
+           (V.NormalW <> NormalW) Then _
+            Return False _
+            Else _
+            Return True
     End Function
 
     ''' <summary>
@@ -157,7 +152,6 @@ Public Structure BasicVertex
         Binormal.TransformNormal(M)
 
         Return Me
-
     End Function
 
     ''' <summary>
@@ -165,7 +159,6 @@ Public Structure BasicVertex
     ''' </summary>
     Friend Function GetPosition3() As Vector3 Implements IVertexPosition3.GetPosition3
         Return Position
-
     End Function
 
     ''' <summary>
@@ -180,7 +173,6 @@ Public Structure BasicVertex
     Friend Function SetPosition3(ByVal V As Vector3) As IVertex Implements IVertexPosition3.SetPosition3
         Position = V
         Return Me
-
     End Function
 
     ''' <summary>
@@ -188,7 +180,6 @@ Public Structure BasicVertex
     ''' </summary>
     Friend Function GetNormal3() As Vector3 Implements IVertexNormal3.GetNormal3
         Return Normal
-
     End Function
 
     ''' <summary>
@@ -203,7 +194,6 @@ Public Structure BasicVertex
     Friend Function SetNormal3(ByVal V As Vector3) As IVertex Implements IVertexNormal3.SetNormal3
         Normal = V
         Return Me
-
     End Function
 
     ''' <summary>
@@ -211,7 +201,6 @@ Public Structure BasicVertex
     ''' </summary>
     Friend Function GetDiffuse() As Direct3D.ColorValue Implements IVertexDiffuse.GetDiffuse
         Return Direct3D.ColorValue.FromArgb(Diffuse)
-
     End Function
 
     ''' <summary>
@@ -226,7 +215,6 @@ Public Structure BasicVertex
     Friend Function SetDiffuse(ByVal V As Direct3D.ColorValue) As IVertex Implements IVertexDiffuse.SetDiffuse
         Diffuse = V.ToArgb()
         Return Me
-
     End Function
 
     ''' <summary>
@@ -240,7 +228,6 @@ Public Structure BasicVertex
     ''' </remarks>
     Friend Function GetTexCoords2(Optional ByVal Index As Integer = 0) As Vector2 Implements IVertexTex2.GetTexCoords2
         Return Tex
-
     End Function
 
     ''' <summary>
@@ -258,10 +245,10 @@ Public Structure BasicVertex
     ''' <remarks>
     ''' All index values point to the same set.
     ''' </remarks>
-    Friend Function SetTexCoords2(ByVal V As Vector2, Optional ByVal Index As Integer = 0) As IVertex Implements IVertexTex2.SetTexCoords2
+    Friend Function SetTexCoords2(ByVal V As Vector2, Optional ByVal Index As Integer = 0) As IVertex _
+        Implements IVertexTex2.SetTexCoords2
         Tex = V
         Return Me
-
     End Function
 
     ''' <summary>
@@ -269,7 +256,6 @@ Public Structure BasicVertex
     ''' </summary>
     Friend Function GetTangent() As Vector3
         Return Tangent
-
     End Function
 
     ''' <summary>
@@ -284,7 +270,6 @@ Public Structure BasicVertex
     Friend Function SetTangent(ByVal V As Vector3) As IVertex
         Tangent = V
         Return Me
-
     End Function
 
     ''' <summary>
@@ -292,7 +277,6 @@ Public Structure BasicVertex
     ''' </summary>
     Friend Function GetBinormal() As Vector3
         Return Binormal
-
     End Function
 
     ''' <summary>
@@ -307,7 +291,6 @@ Public Structure BasicVertex
     Friend Function SetBinormal(ByVal V As Vector3) As IVertex
         Binormal = V
         Return Me
-
     End Function
 
     ''' <summary>
@@ -319,7 +302,8 @@ Public Structure BasicVertex
     ''' <param name="VertexMasks">
     ''' The vertex fields to read.
     ''' </param>
-    Friend Shared Function ReadIFF(ByVal IFF As IFF.IFFReader, ByVal VertexMasks As VertexMasks, ByVal Version As UInteger) As BasicVertex
+    Friend Shared Function ReadIFF(ByVal IFF As IFF.IFFReader, ByVal VertexMasks As VertexMasks,
+                                   ByVal Version As UInteger) As BasicVertex
         Dim V As BasicVertex
 
         With V
@@ -329,51 +313,49 @@ Public Structure BasicVertex
             .Version = Version
 
             If (VertexMasks And VertexMasks.Position) <> 0 Then _
-    .Position.X = IFF.ReadSingle() _
-            : .Position.Y = IFF.ReadSingle() _
-            : .Position.Z = IFF.ReadSingle() _
-            : .PositionW = IFF.ReadSingle()
+                .Position.X = IFF.ReadSingle() _
+                    : .Position.Y = IFF.ReadSingle() _
+                    : .Position.Z = IFF.ReadSingle() _
+                    : .PositionW = IFF.ReadSingle()
 
             If (VertexMasks And VertexMasks.Normal) <> 0 Then _
-    .Normal.X = IFF.ReadSingle() _
-            : .Normal.Y = IFF.ReadSingle() _
-            : .Normal.Z = IFF.ReadSingle() _
-            : .NormalW = IFF.ReadSingle()
+                .Normal.X = IFF.ReadSingle() _
+                    : .Normal.Y = IFF.ReadSingle() _
+                    : .Normal.Z = IFF.ReadSingle() _
+                    : .NormalW = IFF.ReadSingle()
 
             If (VertexMasks And VertexMasks.Colour) <> 0 Then _
-    .Diffuse = __swap1(IFF.ReadInt32())
+                .Diffuse = __swap1(IFF.ReadInt32())
 
             If (VertexMasks And VertexMasks.Texture0) <> 0 Then _
-    .Tex.X = IFF.ReadSingle() _
-            : .Tex.Y = IFF.ReadSingle()
+                .Tex.X = IFF.ReadSingle() _
+                    : .Tex.Y = IFF.ReadSingle()
 
             If (.Version = 1401) Then
                 If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
                     .Tex1.X = IFF.ReadSingle() _
-                : .Tex1.Y = IFF.ReadSingle()
+                        : .Tex1.Y = IFF.ReadSingle()
 
                 If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
                     .Tex2.X = IFF.ReadSingle() _
-                : .Tex2.Y = IFF.ReadSingle()
+                        : .Tex2.Y = IFF.ReadSingle()
             End If
 
             If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
-    .Tangent.X = IFF.ReadSingle() _
-            : .Tangent.Y = IFF.ReadSingle() _
-            : .Tangent.Z = IFF.ReadSingle()
+                .Tangent.X = IFF.ReadSingle() _
+                    : .Tangent.Y = IFF.ReadSingle() _
+                    : .Tangent.Z = IFF.ReadSingle()
 
             If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
-    .Binormal.X = IFF.ReadSingle() _
-            : .Binormal.Y = IFF.ReadSingle() _
-            : .Binormal.Z = IFF.ReadSingle()
-
+                .Binormal.X = IFF.ReadSingle() _
+                    : .Binormal.Y = IFF.ReadSingle() _
+                    : .Binormal.Z = IFF.ReadSingle()
 
 
         End With
 
 
         Return V
-
     End Function
 
     ''' <summary>
@@ -387,44 +369,43 @@ Public Structure BasicVertex
     ''' </param>
     Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter, ByVal VertexMasks As VertexMasks)
         If (VertexMasks And VertexMasks.Position) <> 0 Then _
-   IFF.Write(Position.X) _
-        : IFF.Write(Position.Y) _
-        : IFF.Write(Position.Z) _
-        : IFF.Write(PositionW)
+            IFF.Write(Position.X) _
+                : IFF.Write(Position.Y) _
+                : IFF.Write(Position.Z) _
+                : IFF.Write(PositionW)
 
         If (VertexMasks And VertexMasks.Normal) <> 0 Then _
-   IFF.Write(Normal.X) _
-        : IFF.Write(Normal.Y) _
-        : IFF.Write(Normal.Z) _
-        : IFF.Write(NormalW)
+            IFF.Write(Normal.X) _
+                : IFF.Write(Normal.Y) _
+                : IFF.Write(Normal.Z) _
+                : IFF.Write(NormalW)
 
         If (VertexMasks And VertexMasks.Colour) <> 0 Then _
-   IFF.WriteInt32(__swap2(Diffuse))
+            IFF.WriteInt32(__swap2(Diffuse))
 
         If (VertexMasks And VertexMasks.Texture0) <> 0 Then _
-   IFF.Write(Tex.X) _
-        : IFF.Write(Tex.Y)
+            IFF.Write(Tex.X) _
+                : IFF.Write(Tex.Y)
 
         If (Version = 1401) Then
             If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
-            IFF.Write(Tex1.X) _
-            : IFF.Write(Tex1.Y)
+                IFF.Write(Tex1.X) _
+                    : IFF.Write(Tex1.Y)
 
             If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
-            IFF.Write(Tex2.X) _
-            : IFF.Write(Tex2.Y)
+                IFF.Write(Tex2.X) _
+                    : IFF.Write(Tex2.Y)
         End If
 
         If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
-   IFF.Write(Tangent.X) _
-        : IFF.Write(Tangent.Y) _
-        : IFF.Write(Tangent.Z)
+            IFF.Write(Tangent.X) _
+                : IFF.Write(Tangent.Y) _
+                : IFF.Write(Tangent.Z)
 
         If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
-   IFF.Write(Binormal.X) _
-        : IFF.Write(Binormal.Y) _
-        : IFF.Write(Binormal.Z)
-
+            IFF.Write(Binormal.X) _
+                : IFF.Write(Binormal.Y) _
+                : IFF.Write(Binormal.Z)
     End Sub
 
     ''' <summary>
@@ -433,7 +414,6 @@ Public Structure BasicVertex
     Private Shared Function __swap1(ByVal v As Int32) As Int32
         Dim c As Direct3D.ColorValue = Direct3D.ColorValue.FromArgb(v)
         Return New Direct3D.ColorValue(c.Alpha, c.Red, c.Green, c.Blue).ToArgb()
-
     End Function
 
     ''' <summary>
@@ -442,7 +422,5 @@ Public Structure BasicVertex
     Private Shared Function __swap2(ByVal v As Int32) As Int32
         Dim c As Direct3D.ColorValue = Direct3D.ColorValue.FromArgb(v)
         Return New Direct3D.ColorValue(c.Green, c.Blue, c.Alpha, c.Red).ToArgb()
-
     End Function
-
 End Structure

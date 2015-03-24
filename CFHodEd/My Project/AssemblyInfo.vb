@@ -14,10 +14,10 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Cold Fusion HOD Remastered Editor")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("CFHodRMEd")>
-<Assembly: AssemblyCopyright("-")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyCopyright("-")>
+<Assembly: AssemblyTrademark("")>
 
-<Assembly: ComVisible(False)> 
+<Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("b9f53f2c-22b8-4c6a-8f8a-6bcb6935fb50")>
