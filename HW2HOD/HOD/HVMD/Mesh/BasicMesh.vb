@@ -32,7 +32,7 @@ Public NotInheritable Class BasicMesh
     ''' <summary>Whether the mesh is visible or not.</summary>
     Private m_Visible As Boolean = True
 
-    Private m_Version As UInteger
+    Private m_Version As UInteger = 1400
 
     ' ------------------------
     ' Constructors\Finalizers.

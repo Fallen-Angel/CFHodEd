@@ -91,7 +91,7 @@ Public Structure BasicVertex
     Friend Sub Initialize() Implements IVertex.Initialize
         Position = New Vector3(0, 0, 0)
         Normal = New Vector3(0, 0, 1)
-        Diffuse = - 1
+        Diffuse = -1
         Tex = New Vector2(0, 0)
         Tangent = New Vector3(0, 0, 0)
         Binormal = New Vector3(0, 0, 0)
@@ -117,7 +117,7 @@ Public Structure BasicVertex
         ' Check if 'other' is of same type.
         If Not TypeOf other Is BasicVertex Then _
             Throw New ArgumentException("Object must be of type " & TypeName(Me).ToString & ".") _
-                : Exit Function
+        : Exit Function
 
         ' Get the vertex.
         Dim V As BasicVertex = CType(other, BasicVertex)
@@ -227,7 +227,14 @@ Public Structure BasicVertex
     ''' All index values point to the same set.
     ''' </remarks>
     Friend Function GetTexCoords2(Optional ByVal Index As Integer = 0) As Vector2 Implements IVertexTex2.GetTexCoords2
-        Return Tex
+        Select Case (Index)
+            Case 0
+                Return Tex
+            Case 1
+                Return Tex1
+            Case 2
+                Return Tex2
+        End Select
     End Function
 
     ''' <summary>
@@ -314,42 +321,42 @@ Public Structure BasicVertex
 
             If (VertexMasks And VertexMasks.Position) <> 0 Then _
                 .Position.X = IFF.ReadSingle() _
-                    : .Position.Y = IFF.ReadSingle() _
-                    : .Position.Z = IFF.ReadSingle() _
-                    : .PositionW = IFF.ReadSingle()
+            : .Position.Y = IFF.ReadSingle() _
+            : .Position.Z = IFF.ReadSingle() _
+            : .PositionW = IFF.ReadSingle()
 
             If (VertexMasks And VertexMasks.Normal) <> 0 Then _
                 .Normal.X = IFF.ReadSingle() _
-                    : .Normal.Y = IFF.ReadSingle() _
-                    : .Normal.Z = IFF.ReadSingle() _
-                    : .NormalW = IFF.ReadSingle()
+            : .Normal.Y = IFF.ReadSingle() _
+            : .Normal.Z = IFF.ReadSingle() _
+            : .NormalW = IFF.ReadSingle()
 
             If (VertexMasks And VertexMasks.Colour) <> 0 Then _
                 .Diffuse = __swap1(IFF.ReadInt32())
 
             If (VertexMasks And VertexMasks.Texture0) <> 0 Then _
                 .Tex.X = IFF.ReadSingle() _
-                    : .Tex.Y = IFF.ReadSingle()
+            : .Tex.Y = IFF.ReadSingle()
 
             If (.Version = 1401) Then
                 If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
                     .Tex1.X = IFF.ReadSingle() _
-                        : .Tex1.Y = IFF.ReadSingle()
+                : .Tex1.Y = IFF.ReadSingle()
 
                 If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
                     .Tex2.X = IFF.ReadSingle() _
-                        : .Tex2.Y = IFF.ReadSingle()
+                : .Tex2.Y = IFF.ReadSingle()
             End If
 
             If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
                 .Tangent.X = IFF.ReadSingle() _
-                    : .Tangent.Y = IFF.ReadSingle() _
-                    : .Tangent.Z = IFF.ReadSingle()
+            : .Tangent.Y = IFF.ReadSingle() _
+            : .Tangent.Z = IFF.ReadSingle()
 
             If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
                 .Binormal.X = IFF.ReadSingle() _
-                    : .Binormal.Y = IFF.ReadSingle() _
-                    : .Binormal.Z = IFF.ReadSingle()
+            : .Binormal.Y = IFF.ReadSingle() _
+            : .Binormal.Z = IFF.ReadSingle()
 
 
         End With
@@ -370,42 +377,42 @@ Public Structure BasicVertex
     Friend Sub WriteIFF(ByVal IFF As IFF.IFFWriter, ByVal VertexMasks As VertexMasks)
         If (VertexMasks And VertexMasks.Position) <> 0 Then _
             IFF.Write(Position.X) _
-                : IFF.Write(Position.Y) _
-                : IFF.Write(Position.Z) _
-                : IFF.Write(PositionW)
+        : IFF.Write(Position.Y) _
+        : IFF.Write(Position.Z) _
+        : IFF.Write(PositionW)
 
         If (VertexMasks And VertexMasks.Normal) <> 0 Then _
             IFF.Write(Normal.X) _
-                : IFF.Write(Normal.Y) _
-                : IFF.Write(Normal.Z) _
-                : IFF.Write(NormalW)
+        : IFF.Write(Normal.Y) _
+        : IFF.Write(Normal.Z) _
+        : IFF.Write(NormalW)
 
         If (VertexMasks And VertexMasks.Colour) <> 0 Then _
             IFF.WriteInt32(__swap2(Diffuse))
 
         If (VertexMasks And VertexMasks.Texture0) <> 0 Then _
             IFF.Write(Tex.X) _
-                : IFF.Write(Tex.Y)
+        : IFF.Write(Tex.Y)
 
         If (Version = 1401) Then
             If (VertexMasks And VertexMasks.Texture1) <> 0 Then _
                 IFF.Write(Tex1.X) _
-                    : IFF.Write(Tex1.Y)
+            : IFF.Write(Tex1.Y)
 
             If (VertexMasks And VertexMasks.Texture2) <> 0 Then _
                 IFF.Write(Tex2.X) _
-                    : IFF.Write(Tex2.Y)
+            : IFF.Write(Tex2.Y)
         End If
 
         If (VertexMasks And VertexMasks.Tangent) <> 0 Then _
             IFF.Write(Tangent.X) _
-                : IFF.Write(Tangent.Y) _
-                : IFF.Write(Tangent.Z)
+        : IFF.Write(Tangent.Y) _
+        : IFF.Write(Tangent.Z)
 
         If (VertexMasks And VertexMasks.Binormal) <> 0 Then _
             IFF.Write(Binormal.X) _
-                : IFF.Write(Binormal.Y) _
-                : IFF.Write(Binormal.Z)
+        : IFF.Write(Binormal.Y) _
+        : IFF.Write(Binormal.Z)
     End Sub
 
     ''' <summary>

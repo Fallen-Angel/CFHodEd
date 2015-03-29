@@ -147,7 +147,7 @@
     <EmbeddedResource Include="Shaders\matte.ps" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Shaders\badge.vs" />
+    <EmbeddedResource Include="Shaders\2badge.vs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

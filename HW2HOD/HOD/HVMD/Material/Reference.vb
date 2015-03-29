@@ -266,14 +266,18 @@ Partial Class Material
                 If (shaderName = "badge") AndAlso (Material.m_BadgeTexture Is Nothing) Then _
                  shaderName = "ship"
 
+                If (shaderName = "badge") Then
+                    tex3 = Material.BadgeTexture
+                End If
+
                 ' 2) If main texture is not available use NO shader (unless it's a background
                 ' shader ofcourse, which requires no textures).
                 If (tex0 Is Nothing) AndAlso (shaderName <> "background") Then _
                  shaderName = ""
 
-            End If ' If m_Material IsNot Nothing Then
+                End If ' If m_Material IsNot Nothing Then
 
-            With _Device
+                With _Device
                 Dim amb, diff, spec, ems, pow As Vector4
 
                 ' HACK: Is there a better way than this? Sum up light colours.
