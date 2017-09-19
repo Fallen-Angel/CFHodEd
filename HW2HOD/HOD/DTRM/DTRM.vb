@@ -310,7 +310,7 @@ Partial Class HOD
     ''' </param>
     Private Sub ReadDTRMChunk(ByVal IFF As IFF.IFFReader, ByVal ChunkAttributes As IFF.ChunkAttributes)
         ' Add handlers.
-        IFF.AddHandler("HIER", Homeworld2.IFF.ChunkType.Default, AddressOf ReadHIERChunk)
+        IFF.AddHandler("HIER", Homeworld2.IFF.ChunkType.Form, AddressOf ReadHIERChunk)
         IFF.AddHandler("ETSH", Homeworld2.IFF.ChunkType.Default, AddressOf ReadETSHChunk)
         IFF.AddHandler("GLOW", Homeworld2.IFF.ChunkType.Form, AddressOf ReadGLOWChunk)
         IFF.AddHandler("BURN", Homeworld2.IFF.ChunkType.Default, AddressOf ReadBURNChunk)
@@ -322,6 +322,7 @@ Partial Class HOD
         IFF.AddHandler("BNDV", Homeworld2.IFF.ChunkType.Default, AddressOf ReadBNDVChunk)
         IFF.AddHandler("COLD", Homeworld2.IFF.ChunkType.Form, AddressOf ReadCOLDChunk)
         IFF.AddHandler("BSRM", Homeworld2.IFF.ChunkType.Form, AddressOf ReadBSRMChunk)
+        'IFF.AddHandler("KDOP", Homeworld2.IFF.ChunkType.Default, AddressOf ReadKDOPChunk)
 
         m_Scar = New List(Of Byte())()
         IFF.AddHandler("SCAR", Homeworld2.IFF.ChunkType.Normal, AddressOf ReadSCARChunk, 2015)

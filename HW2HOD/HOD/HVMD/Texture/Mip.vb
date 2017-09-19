@@ -165,7 +165,8 @@
             m_Height = IFF.ReadInt32()
 
             ' Read data.
-            m_Data = IFF.ReadBytes(Mip.Size(m_Width, m_Height, 1, FourCC))
+            m_Data = Pool.Pool.TextureStream.ReadBytes(Mip.Size(m_Width, m_Height, 1, FourCC))
+            'IFF.ReadBytes(Mip.Size(m_Width, m_Height, 1, FourCC))
 
             ' Perform RGBA -> ARGB
             If FourCC = "8888" Then

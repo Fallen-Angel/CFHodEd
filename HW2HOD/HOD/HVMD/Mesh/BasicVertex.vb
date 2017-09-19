@@ -1,4 +1,5 @@
-﻿Imports GenericMesh
+﻿Imports System.IO
+Imports GenericMesh
 Imports GenericMesh.VertexFields
 Imports Microsoft.DirectX.PrivateImplementationDetails
 
@@ -309,7 +310,7 @@ Public Structure BasicVertex
     ''' <param name="VertexMasks">
     ''' The vertex fields to read.
     ''' </param>
-    Friend Shared Function ReadIFF(ByVal IFF As IFF.IFFReader, ByVal VertexMasks As VertexMasks,
+    Friend Shared Function ReadIFF(ByVal IFF As BinaryReader, ByVal VertexMasks As VertexMasks,
                                    ByVal Version As UInteger) As BasicVertex
         Dim V As BasicVertex
 

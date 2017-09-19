@@ -139,11 +139,11 @@ Public NotInheritable Class HOD
 
         If stream Is Nothing Then _
             Throw New ArgumentNullException("stream") _
-                : Exit Sub
+        : Exit Sub
 
         If Not stream.CanRead Then _
             Throw New ArgumentException("Cannot read from stream.") _
-                : Exit Sub
+        : Exit Sub
 
         ' Prepare a new IFF reader.
         IFF = New IFF.IFFReader(stream)
@@ -158,6 +158,7 @@ Public NotInheritable Class HOD
         ' Add handlers.
         IFF.AddHandler("VERS", Homeworld2.IFF.ChunkType.Form, AddressOf ReadVERSChunk)
         IFF.AddHandler("NAME", Homeworld2.IFF.ChunkType.Form, AddressOf ReadNAMEChunk)
+        IFF.AddHandler("POOL", Homeworld2.IFF.ChunkType.Default, AddressOf ReadPOOLChunk)
         IFF.AddHandler("BGMS", Homeworld2.IFF.ChunkType.Form, AddressOf ReadBGMSChunk)
         IFF.AddHandler("HVMD", Homeworld2.IFF.ChunkType.Form, AddressOf ReadHVMDChunk)
 
@@ -188,11 +189,11 @@ Public NotInheritable Class HOD
     Public Sub Write(ByVal stream As IO.Stream)
         If stream Is Nothing Then _
             Throw New ArgumentNullException("stream") _
-                : Exit Sub
+        : Exit Sub
 
         If Not stream.CanWrite Then _
             Throw New ArgumentException("Cannot write to stream.") _
-                : Exit Sub
+        : Exit Sub
 
         ' Prepare new IFF writer.
         Dim IFF As New IFF.IFFWriter(stream)
@@ -214,18 +215,18 @@ Public NotInheritable Class HOD
         ' Without the BGLT chunk, HW2 crashes.
         If m_Version = 1000 Then _
             WriteBGLTChunk(IFF) _
-                : WriteBGMSChunk(IFF) _
-                : WriteBGSGChunk(IFF) _
-                : WriteSTRFChunk(IFF) _
-                : If m_BackgroundMeshes.Count <> m_StarFields.Count Then _
+        : WriteBGMSChunk(IFF) _
+        : WriteBGSGChunk(IFF) _
+        : WriteSTRFChunk(IFF) _
+        : If m_BackgroundMeshes.Count <> m_StarFields.Count Then _
                     Trace.TraceError(
                         "The number of star fields does not equal the number of background meshes. Please fix.")
 
         ' Write the HVMD, DTRM and INFO chunks, only for version 0x200.
         If m_Version = &H200 Then _
             WriteHVMDChunk(IFF) _
-                : WriteDTRMChunk(IFF) _
-                : WriteINFOChunk(IFF)
+        : WriteDTRMChunk(IFF) _
+        : WriteINFOChunk(IFF)
     End Sub
 
     ''' <summary>

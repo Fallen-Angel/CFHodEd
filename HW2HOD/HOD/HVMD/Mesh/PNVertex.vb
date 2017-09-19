@@ -1,4 +1,5 @@
-﻿Imports GenericMesh
+﻿Imports System.IO
+Imports GenericMesh
 Imports GenericMesh.VertexFields
 
 ''' <summary>
@@ -83,7 +84,7 @@ Public Structure PNVertex
         ' Check if 'other' is of same type.
         If Not TypeOf other Is BasicVertex Then _
             Throw New ArgumentException("Object must be of type " & TypeName(Me).ToString & ".") _
-                : Exit Function
+        : Exit Function
 
         ' Get the vertex.
         Dim V As BasicVertex = CType(other, BasicVertex)
@@ -160,7 +161,7 @@ Public Structure PNVertex
     ''' <param name="IFF">
     ''' The IFF reader to read from.
     ''' </param>
-    Friend Shared Function ReadIFF(ByVal IFF As IFF.IFFReader) As PNVertex
+    Friend Shared Function ReadIFF(ByVal IFF As BinaryReader) As PNVertex
         Dim V As PNVertex
 
         With V

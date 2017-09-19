@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26009.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CFHodEd", "CFHodEd.vbproj", "{4C0E1BEC-EE85-47CA-8C37-6958BAAD9232}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GenericMath", "..\GenericMath\GenericMath.vbproj", "{55A9D27C-6A26-4379-9612-E84E177D4708}"
@@ -16,6 +18,8 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HW2HOD", "..\HW2HOD\HW2HOD.vbproj", "{B0E1E706-297B-4F0F-ACCF-DE5A9CD37A2B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HW2MAD", "..\HW2MAD\HW2MAD.vbproj", "{CA7FC163-7169-46B0-840D-77667B74C2DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool", "..\Pool\Pool.csproj", "{934C5797-642D-42BC-B559-38756DD5BE55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{CA7FC163-7169-46B0-840D-77667B74C2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7FC163-7169-46B0-840D-77667B74C2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA7FC163-7169-46B0-840D-77667B74C2DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{934C5797-642D-42BC-B559-38756DD5BE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{934C5797-642D-42BC-B559-38756DD5BE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{934C5797-642D-42BC-B559-38756DD5BE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{934C5797-642D-42BC-B559-38756DD5BE55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -418,7 +418,7 @@ Public NotInheritable Class CollisionMesh
 
         ' Read vertices.
         For I As Integer = 0 To Me.Part(0).Vertices.Count - 1
-            Me.Part(0).Vertices(I) = PNVertex.ReadIFF(IFF)
+            Me.Part(0).Vertices(I) = PNVertex.ReadIFF(Pool.Pool.MeshStream)
 
         Next I ' For I As Integer = 0 To Me.Part(0).Vertices.Count - 1
 
@@ -429,7 +429,7 @@ Public NotInheritable Class CollisionMesh
 
         ' Read indices.
         For I As Integer = 0 To Me.Part(0).PrimitiveGroups(0).IndiceCount - 1
-            Me.Part(0).PrimitiveGroups(0).Indice(I) = IFF.ReadUInt16()
+            Me.Part(0).PrimitiveGroups(0).Indice(I) = Pool.Pool.FaceStream.ReadUInt16()
 
         Next I ' For I As Integer = 0 To Me.Part(0).PrimitiveGroups(0).IndiceCount - 1
 

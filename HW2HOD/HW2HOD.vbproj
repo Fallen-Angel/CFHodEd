@@ -115,6 +115,7 @@
     <Compile Include="HOD\HVMD\Texture\Texture.vb" />
     <Compile Include="HOD\HODRender.vb" />
     <Compile Include="HOD\INFO\INFO.vb" />
+    <Compile Include="HOD\POOL\POOL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="EventList.vb" />
     <Compile Include="ShaderLibrary.vb" />
@@ -138,6 +139,10 @@
     <ProjectReference Include="..\HW2IFF\HW2IFF.vbproj">
       <Project>{770125AF-61DD-4D91-8B6D-428FEFF8BFE2}</Project>
       <Name>HW2IFF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pool\Pool.csproj">
+      <Project>{934c5797-642d-42bc-b559-38756dd5be55}</Project>
+      <Name>Pool</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

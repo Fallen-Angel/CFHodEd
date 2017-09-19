@@ -138,7 +138,7 @@ Public NotInheritable Class EngineShape
                 pg.Indice(I) = Me.Part(0).Vertices.Count
 
                 ' Read and add vertex.
-                Me.Part(0).Vertices.Append(New PNVertex() {PNVertex.ReadIFF(IFF)})
+                Me.Part(0).Vertices.Append(New PNVertex() {PNVertex.ReadIFF(Pool.Pool.MeshStream)})
 
             Next I ' For I As Integer = 0 To pg.IndiceCount - 1
 

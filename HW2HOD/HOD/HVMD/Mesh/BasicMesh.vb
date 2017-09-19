@@ -141,17 +141,19 @@ Public NotInheritable Class BasicMesh
 
                 ' Read all vertices, and only the specified fields.
                 For J As Integer = 0 To .Vertices.Count - 1
-                    .Vertices(J) = BasicVertex.ReadIFF(IFF, .Material.VertexMask, m_Version)
+                    .Vertices(J) = BasicVertex.ReadIFF(Pool.Pool.MeshStream, .Material.VertexMask, m_Version)
 
                 Next J ' For I As Integer = 0 To .Vertices.Count - 1
 
                 ' Read the number of primitive groups.
-                .PrimitiveGroupCount = IFF.ReadInt16()
+                .PrimitiveGroupCount = 1 'Pool.Pool.MeshStream.ReadInt16()
+                IFF.ReadInt16()
 
                 ' Read all primitive groups.
                 For J As Integer = 0 To .PrimitiveGroupCount - 1
                     ' Read primitive type.
-                    Dim Type As PrimitiveType = CType(IFF.ReadInt32(), PrimitiveType)
+                    'Dim Type As PrimitiveType = CType(Pool.Pool.FaceStream.ReadInt32(), PrimitiveType)
+                    Dim Type As PrimitiveType = CType(514, PrimitiveType)
 
                     Select Case Type
                         Case PrimitiveType.TriangleList
@@ -174,7 +176,7 @@ Public NotInheritable Class BasicMesh
 
                     ' Read all indices.
                     For K As Integer = 0 To .PrimitiveGroups(J).IndiceCount - 1
-                        .PrimitiveGroups(J).Indice(K) = IFF.ReadUInt16()
+                        .PrimitiveGroups(J).Indice(K) = Pool.Pool.FaceStream.ReadUInt16()
 
                     Next K ' For K As Integer = 0 To .PrimitiveGroups(J).IndiceCount - 1
                 Next J ' For J As Integer = 0 To .PrimitiveGroupCount - 1
