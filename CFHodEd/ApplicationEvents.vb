@@ -91,11 +91,13 @@ Namespace My
             Try
                 InitializeD3DHelper()
 
-            Catch ex As IO.FileNotFoundException
-                MsgBox("Please install the latest version of DirectX (August 2007 or later).",
+            Catch ex As Exception
+                If TypeOf ex Is IO.FileNotFoundException Then
+                    MsgBox("Please install the latest version of DirectX (August 2007 or later).",
                        MsgBoxStyle.Critical, "Cold Fusion HOD Editor")
 
-                End
+                    End
+                End If
 
             End Try
 
